@@ -5,6 +5,8 @@ import PostTags from '../PostTags';
 import PostCardProps from './PostCardType';
 import './PostCard.scss';
 import { LikeButton } from '../LikeButton';
+import { useAuth } from '@/auth/hooks';
+import { LoginTypeEnum } from '@/auth/types';
 
 const PostCard: React.FC<PostCardProps> = ({
   id,
@@ -18,8 +20,11 @@ const PostCard: React.FC<PostCardProps> = ({
   type,
   reactionsCount,
   reacted,
-}) => (
-  <Link className="post-card__content-body" to={`post/${id}`}>
+}) => {
+  const { userLoginType } = useAuth()
+
+  return (
+    <Link className="post-card__content-body" to={`post/${id}`}>
     <div className="post-card">
       {img ? (
         <img src={img} className="post-card__image" alt={slug} />
@@ -36,10 +41,15 @@ const PostCard: React.FC<PostCardProps> = ({
           <span className="text-xs">Published: {publishedAt}</span>
           <span className="text-xs">Created By: {createdBy}</span>
         </div>
-        <LikeButton id={id} reacted={reacted} likeCountNumber={reactionsCount} />
+        {
+          userLoginType === LoginTypeEnum.MEMBER 
+          &&
+          <LikeButton  id={id} reacted={reacted} likeCountNumber={reactionsCount} />
+        }
       </div>
     </div>
-  </Link>
-);
-
+    </Link>
+  )
+}
+  
 export default PostCard;

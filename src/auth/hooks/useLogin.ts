@@ -9,21 +9,13 @@ type TLogin = (domain: string, username: string, password: string) => Promise<Si
 const useLogin = (): [login: TLogin, MutationResult<unknown>] => {
   const [fetchToken] = useFetchGuestToken();
   const [loginMember, result] = useMutation(LOGIN_MEMBER);
-  const { data, loading, error } = result;
 
   const { setToken } = useAuth();
 
-  useEffect(() => {
-    if (!loading && !error && data) {
-      setToken(data.loginNetwork.accessToken);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error, loading, data]);
-
   const login: TLogin = async (domain, username, password) => {
-    const { error } = await fetchToken(domain);
-    if (error) {
-      return { error, loading: false, data: null };
+    const { error: fetchTokenError } = await fetchToken(domain);
+    if (fetchTokenError) {
+      return { fetchTokenError, loading: false, data: null };
     }
     const result = await loginMember({
       variables: {
@@ -31,6 +23,10 @@ const useLogin = (): [login: TLogin, MutationResult<unknown>] => {
         password,
       },
     });
+    const { data, loading, error } = result;
+    if (!loading && !error && data) {
+      setToken(data.loginNetwork.accessToken);
+    }
     return result;
   };
 

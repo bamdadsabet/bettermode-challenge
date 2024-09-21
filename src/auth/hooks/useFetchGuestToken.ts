@@ -9,7 +9,7 @@ const useFetchGuestToken = (): [TFetchToken, QueryResult<unknown, OperationVaria
   const [getToken, result] = useLazyQuery(GET_GUEST_TOKEN);
   const { data, loading, error } = result;
 
-  const { setToken } = useAuth();
+  const { setToken, setUserType } = useAuth();
 
   useEffect(() => {
     if (!loading && !error && data) {

@@ -14,7 +14,7 @@ const LoginPage: React.FC = () => {
 
   const { setError, errorMessage, showError } = useErrorHandler();
 
-  const { logout } = useAuth();
+  const { logout, setUserType } = useAuth();
 
   const loginFormRef = useRef<HTMLFormElement>(null);
 
@@ -46,6 +46,7 @@ const LoginPage: React.FC = () => {
       if (error) {
         setError(error.message);
       } else if (!loading && data) {
+        setUserType(LoginTypeEnum.MEMBER)
         navigate(ROOT_PATH);
       }
     } else {
@@ -54,6 +55,7 @@ const LoginPage: React.FC = () => {
         setError(error.message);
       }
       if (!loading && data) {
+        setUserType(LoginTypeEnum.GUEST)
         navigate(ROOT_PATH);
       }
     }
@@ -133,3 +135,4 @@ const LoginPage: React.FC = () => {
 };
 
 export default LoginPage;
+

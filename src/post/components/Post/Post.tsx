@@ -4,8 +4,13 @@ import PostTags from '@post/components/PostTags';
 import { getImgUrl } from '@post/utils/thumbnail';
 import './Post.scss';
 import { LikeButton } from '../LikeButton';
+import { LoginTypeEnum } from '@/auth/types';
+import { useAuth } from '@/auth/hooks';
 
 const Post: React.FC<PostProps> = ({ postData, thumbnail, tags, type, id, reactionsCount, reacted, slug }) => {
+
+  const { userLoginType } = useAuth() 
+
   // FIXME type
   const { title, content, previewImageId } = postData.reduce((acc, field) => {
     acc[field.key] = {
@@ -23,7 +28,11 @@ const Post: React.FC<PostProps> = ({ postData, thumbnail, tags, type, id, reacti
         <h1 className="post__title">{title.value}</h1>
         <article className="post__article" dangerouslySetInnerHTML={{ __html: content.value }} />
         {previewImageId.value !== null && <img src={getImgUrl(previewImageId.value)} alt={slug} />}
-        <LikeButton id={id} reacted={reacted} likeCountNumber={reactionsCount} />
+        {
+          userLoginType === LoginTypeEnum.MEMBER 
+          &&
+          <LikeButton  id={id} reacted={reacted} likeCountNumber={reactionsCount} />
+        }
       </div>
     </div>
   );

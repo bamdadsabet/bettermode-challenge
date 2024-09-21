@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import './LikeButton.scss';
 import { ActionEnum, LikeButtonProps } from './types';
 
-const LikeButton: React.FC<LikeButtonProps> = ({ likeCountNumber, className, reacted, id, setError }) => {
+const LikeButton: React.FC<LikeButtonProps> = ({ likeCountNumber, className, reacted, id }) => {
   const [isLiked, setIsLiked] = useState<boolean>(reacted);
   const [likeCount, setLikeCount] = useState<number>(likeCountNumber);
   const addLike = useAddLike();
@@ -14,18 +14,15 @@ const LikeButton: React.FC<LikeButtonProps> = ({ likeCountNumber, className, rea
   const handleToggleLike = async (e: MouseEvent) => {
     e.preventDefault();
     if (isLiked) {
-      const { data, loading, error } = await removeLike(id);
-      if (error) {
-        setError(error.message);
-      } else if (!loading && data && data.status === ActionEnum.SUCCEEDED) {
+      const { data } = await removeLike(id);
+      
+      if (data && data?.removeReaction && data?.removeReaction.status === ActionEnum.SUCCEEDED) {
         setLikeCount((currentLikeCount) => currentLikeCount - 1);
         setIsLiked(false);
       }
     } else {
-      const { data, loading, error } = await addLike(id);
-      if (error) {
-        setError(error.message);
-      } else if (!loading && data && data.status === ActionEnum.SUCCEEDED) {
+      const { data } = await addLike(id);
+      if (data && data?.addReaction && data?.addReaction.status === ActionEnum.SUCCEEDED) {
         setLikeCount((currentLikeCount) => currentLikeCount + 1);
         setIsLiked(true);
       }

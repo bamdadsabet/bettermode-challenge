@@ -1,0 +1,15 @@
+.not-found-page {
+  @apply w-full h-screen flex flex-col justify-center items-center;
+  &__status {
+    @apply text-5xl font-semibold text-gray-200 mb-12;
+  }
+  &__title {
+    @apply text-6xl font-bold text-gray-300 sm:text-5xl;
+  }
+  &__description {
+    @apply mt-6 text-base leading-7 text-gray-100;
+  }
+  &__button {
+    @apply rounded-md mt-10 flex gap-2 items-center bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500;
+  }
+}

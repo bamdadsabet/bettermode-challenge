@@ -1,0 +1,22 @@
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.toast {
+  animation: fadeInOut 5s ease-in-out forwards;
+  @apply fixed bottom-2 flex gap-3 items-center w-full max-w-[500px] p-4 mb-4 text-gray-100 rounded-lg shadow bg-rose-500 transition-opacity duration-300;
+  &__card {
+    @apply inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg bg-red-600 text-gray-200;
+  }
+  &__message {
+    @apply ms-3 text-sm font-normal;
+  }
+}

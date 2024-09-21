@@ -1,0 +1,9 @@
+.post-tag {
+  @apply rounded-3xl bg-zinc-700 py-2 md:px-4 px-2 border border-transparent text-xs text-gray-300 shadow-sm;
+  &__container {
+    @apply flex md:gap-3  gap-x-2 gap-y-4 md:flex-nowrap flex-wrap;
+  }
+  &--type {
+    @apply inline-block mr-2 rounded-md bg-zinc-600 py-2 md:px-5 px-3 border border-transparent text-xs text-white shadow-sm;
+  }
+}

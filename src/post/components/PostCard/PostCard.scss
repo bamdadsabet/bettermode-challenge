@@ -1,0 +1,21 @@
+.post-card {
+  @apply bg-zinc-800 shadow-lg rounded-2xl text-left w-full max-w-[650px];
+  &__image {
+    @apply rounded-t-2xl h-52 w-full object-cover;
+    &--empty {
+      @apply w-full flex justify-center items-center h-52 bg-zinc-700 rounded-t-2xl;
+    }
+  }
+  &__content-body {
+    @apply pb-5 px-4 pt-6 max-w-[650px] w-full flex-grow;
+  }
+  &__description {
+    @apply mt-5 md:mb-8 mb-6 text-sm;
+  }
+  &__footer {
+    @apply mt-6 mb-6 flex flex-col gap-2;
+  }
+  &__container {
+    @apply max-w-[650px] flex-grow;
+  }
+}

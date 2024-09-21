@@ -1,0 +1,9 @@
+.post-tags__skeleton {
+  @apply flex gap-3 mt-6;
+  &__chip {
+    @apply rounded-3xl bg-zinc-700 w-16 h-6;
+    &--type {
+      @apply inline-block mr-2 rounded-md bg-zinc-600 w-20 h-6;
+    }
+  }
+}

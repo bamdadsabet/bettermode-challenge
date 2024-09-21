@@ -1,0 +1,24 @@
+.post-card__skeleton {
+  @apply animate-pulse m-auto bg-zinc-800 shadow-xl rounded-2xl w-full max-w-[600px];
+  &__image {
+    @apply rounded-t-2xl bg-zinc-700 h-52 w-full;
+  }
+  &__body {
+    @apply flex-1 pb-8 px-4 pt-6 space-y-6 py-1;
+  }
+  &__content {
+    @apply grid grid-cols-4 gap-4;
+  }
+  &__title {
+    @apply h-2 bg-zinc-700 rounded;
+  }
+  &__line {
+    @apply h-2 bg-zinc-700 rounded-sm;
+  }
+  &__footer {
+    @apply flex flex-col gap-y-2;
+    &__line {
+      @apply h-1 bg-zinc-600 rounded-sm;
+    }
+  }
+}

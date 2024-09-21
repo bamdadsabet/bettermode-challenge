@@ -1,0 +1,30 @@
+.post {
+  @apply bg-zinc-800 flex flex-col sm:px-8 sm:pt-9 sm:pb-3 md:py-5 py-3 px-4 md:mt-12 mt-0 rounded-lg w-full max-w-[1000px];
+  &__image {
+    @apply mb-10 rounded-lg w-full object-cover max-h-[500px];
+  }
+  &__title {
+    @apply md:mb-9 mb-6 md:text-2xl text-xl text-left;
+  }
+  &__article {
+    @apply text-left leading-8;
+    h3 {
+      @apply mb-2;
+    }
+    p {
+      @apply mb-6;
+      code {
+        @apply w-full bg-zinc-700 py-1 px-2 rounded-md text-slate-400;
+      }
+    }
+    img {
+      @apply mb-12 mx-auto rounded-2xl;
+    }
+    pre {
+      @apply bg-zinc-900 md:p-4 p-6 rounded-2xl md:text-base text-sm whitespace-pre-wrap break-words;
+      code {
+        @apply text-green-700;
+      }
+    }
+  }
+}

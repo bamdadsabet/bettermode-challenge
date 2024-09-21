@@ -1,0 +1,13 @@
+.post__skeleton {
+  @apply bg-zinc-800 md:mt-12 mt-0 px-8 mx-auto animate-pulse shadow-xl md:px-16 md:pt-12 md:pb-4 py-5 rounded-lg max-w-[1000px];
+  &__image {
+    @apply w-full block rounded-lg bg-zinc-700 md:h-[400px] h-[300px] mb-8;
+  }
+  &__title {
+    @apply h-4 w-5/6 bg-zinc-700 rounded mb-10;
+  }
+  // FIX duplicated code
+  &__line {
+    @apply h-2 bg-zinc-700;
+  }
+}

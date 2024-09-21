@@ -1,0 +1,6 @@
+.post-list-page {
+  @apply flex pt-12 px-4 gap-12 items-center flex-col;
+  &__view-more-button {
+    @apply mb-6 bg-transparent w-full md:max-w-[500px] max-w-[300px] hover:bg-indigo-500 text-indigo-500 font-semibold hover:text-white py-4 border border-indigo-500 hover:border-transparent rounded;
+  }
+}

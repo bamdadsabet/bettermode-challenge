@@ -8,5 +8,4 @@ export interface LikeButtonProps {
   className?: string;
   id: string;
   reacted: boolean;
-  setError: (errorMessageValue: string) => void;
 }

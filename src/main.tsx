@@ -30,10 +30,8 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 })
 
 const logoutLink = onError(({graphQLErrors}) => {
-  console.log('hi', graphQLErrors)
   if(graphQLErrors) {
     graphQLErrors.map(({status}) => {
-      console.log(graphQLErrors)
       if(status === 403) window.location.href = paths.LOGIN_PATH
     })
   }
